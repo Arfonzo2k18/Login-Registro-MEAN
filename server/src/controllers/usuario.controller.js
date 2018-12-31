@@ -1,5 +1,11 @@
 const Usuario = require('../models/usuario');
 
+//encriptar password
+const bcrypt = require('bcryptjs');
+
+//token jwt
+const jwt = require('jsonwebtoken');
+
 const usuarioControlador = {};
 
 usuarioControlador.getUsuarios = async (req, res) => {
@@ -33,31 +39,60 @@ usuarioControlador.createUsuario = async (req, res) => {
         });
     };
 
-    // MÃ©todo para buscar un empleado por ID. (GET)
-usuarioControlador.getUsuario = async (req, res) => {
-    try {
-    // El await en este caso se encarga de esperar a que la base de datos haya encontrado un empleado por id.
-    // Dicho id estÃ¡ especificado en la URL de nuestro navegador. Por ejemplo si buscamos al empleado con id 1,
-    // nuestra url serÃ­a http://localhost:3000/api/empleado/1
-    const usuario = await Usuario.findById(req.params.email);
+//login
+usuarioControlador.login = async (req, res) => {
 
-    // Si lo encuentra manda un código de respuesta 200.
-    res.status(200).json({
-        Success: true,
-        Usuario: usuario,
-        email: email
-    })
-    // Si falla manda un mensaje de error y un código de respuesta 400.
-    } catch(error){
-        return res.status(404).json({
-            Success: false,
-            errors: {
-                error: error,
-                message: `No se ha encontrado ningun usuario con el Email ` + req.params.email
-            }
-        })
+    let body = req.body;
+
+    //comprueba que hay email y password
+    if( !body.email || !body.password ){
+        return res.status(400.6).json({
+            ok: false,
+            err: 'Faltan los campos email o password'
+        });
     }
-};
+
+    //busca el email recibido en la base de datos
+    usuarioControlador.findOne({ email: body.email, state: true }, (err, usuarioDB) => {
+
+        if(err){
+            return res.status(500).json({
+                ok: false,
+                err
+            });
+        }
+
+        if(!usuarioDB){
+            return res.status(400).json({
+                ok: false,
+                err: 'Email incorrecto'
+            });
+        }
+
+        //si llegamos aqui, el email es correcto
+        //comparar password enviada+hash con la password de la bdd
+        if(!bcrypt.compareSync(body.password, usuarioDB.password)){
+            //si entra aquí, la contraseña es incorrecta
+            return res.status(400).json({
+                ok: false,
+                err: 'Contraseña incorrecta'
+            });
+        }
+
+        //al llegar aquí, el usuario es correcto, se le retorna el ok y el token
+
+        let token = jwt.sign({
+            usuario: usuarioDB //payload
+        }, process.env.SEED, //firma
+            {expiresIn: process.env.CADUCIDAD_TOKEN} //caducidad
+        );
+
+        return res.status(202).json({
+            ok: true,
+            usuario: usuarioDB,
+            token
+        });
+    });
+}
 
 module.exports = usuarioControlador;
-    

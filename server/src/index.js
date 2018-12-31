@@ -1,7 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const session = require('express-session');
-
 
 // Inicializaciones
 const app = express();
@@ -14,11 +12,6 @@ app.use(cors({origin: 'http://localhost:4200'}));
 
 // MiddleWare
 app.use(express.urlencoded({extended: false}));
-app.use(session({
-    secret: 'appMEAN',
-    resave: true,
-    saveUninitialized: true
-}));
 
 // Rutas
 app.use(require('./routes/usuario.routes'));

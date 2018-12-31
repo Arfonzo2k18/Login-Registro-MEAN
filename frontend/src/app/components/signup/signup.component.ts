@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private authservice: AuthService) { }
+  constructor(private route: ActivatedRoute, private authservice: AuthService) {}
 
   ngOnInit() {
   }
@@ -29,4 +29,5 @@ export class SignupComponent implements OnInit {
       form.reset();
     }
   }
+
 }

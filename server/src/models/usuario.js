@@ -9,7 +9,11 @@ const EsquemaUsuarios = new Schema({
     nombre: {type: String, required: true },
     username: {type: String, required: true },
     email: {type: String, required: true},
-    password: {type: String, required: true, minlength: 6}
+    password: {type: String, required: true, minlength: 6},
+    estado: {type: Boolean, required: true, default: true},
+    google: {type: Boolean, required: true, default: false},
+    fechaRegistro: {type: Date, required: true, default: new Date()},
+    ultimoAcceso: {type: Date, required: true, default: new Date()}
 });
 
 // Exportamos el módulo para que podamos acceder desde el controlador de nuestra bdd.

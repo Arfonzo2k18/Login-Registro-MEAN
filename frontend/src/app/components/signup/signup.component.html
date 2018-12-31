@@ -1,21 +1,21 @@
-<div class="container">
+<div class="container mt-5">
   <form #signupForm="ngForm">
     <div class="form-group">
-      <label>First Name</label>
-      <input type="text" class="form-control" placeholder="First Name" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="authservice.selectedUsuario.nombre">
+      <label>Nombre</label>
+      <input type="text" class="form-control" placeholder="Nombre" id="nombre" name="nombre" #nombre="ngModel" [(ngModel)]="authservice.selectedUsuario.nombre">
     </div>
     <div class="form-group">
-      <label>Nickname</label>
-      <input type="text" class="form-control" placeholder="Nickname" id="username" name="username" #username="ngModel" [(ngModel)]="authservice.selectedUsuario.username">
+      <label>Username</label>
+      <input type="text" class="form-control" placeholder="Nombre de usuario" id="username" name="username" #username="ngModel" [(ngModel)]="authservice.selectedUsuario.username">
     </div>
     <div class="form-group">
-      <label>Email Address</label>
-      <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter email" id="email" name="email" #email="ngModel" [(ngModel)]="authservice.selectedUsuario.email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <label>Email</label>
+      <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Introduce tu correo electrónico" id="email" name="email" #email="ngModel" [(ngModel)]="authservice.selectedUsuario.email">
+      <small id="emailHelp" class="form-text text-muted">No compartiremos tu correo con nadie.</small>
     </div>
     <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" placeholder="Password" id="password" name="password" #password="ngModel" [(ngModel)]="authservice.selectedUsuario.password">
+      <label>Contraseña</label>
+      <input type="password" class="form-control" placeholder="Contraseña" id="password" name="password" #password="ngModel" [(ngModel)]="authservice.selectedUsuario.password">
     </div>
     <button type="submit" class="btn btn-danger" (click)="createUser(signupForm)">Registrar</button>
   </form>
