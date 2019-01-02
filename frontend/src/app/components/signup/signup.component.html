@@ -19,4 +19,15 @@
     </div>
     <button type="submit" class="btn btn-danger" (click)="createUser(signupForm)">Registrar</button>
   </form>
+
+  <!-- Success message -->
+  <div class="alert alert-success mt-3" *ngIf="showSucessMessage">
+    ¡Te has registrado correctamente!
+  </div>
+
+<!-- Error message -->
+  <div class="alert alert-warning mt-3" *ngIf="serverErrorMessages">
+    {{serverErrorMessages}}
+  </div>
+
 </div>

@@ -1,32 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-    <a class="navbar-brand brand-logo" href="#"> <img src="../assets/logo.png"></a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-5">
+    <a class="navbar-brand brand-logo" routerLink="/"> <img src="../assets/logo.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Inicio</a>
+          <a class="nav-link" routerLink="/">Inicio</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="#">Cursos</a>
         </li>
         <li class="nav-item active">
-          <a class="nav-link " routerLink="/signup">Regístrate</a>
+          <a class="nav-link" routerLink="/signup" *ngIf="!authservice.isLoggedIn()">Regístrate</a>
         </li>
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown active" *ngIf="!authservice.isLoggedIn()">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Iniciar Sesión
           </a>
           <div class="dropdown-menu">
-            <form class="px-4 py-3">
+            <form class="px-4 py-3" #loginForm="ngForm">
               <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                <input type="email" class="form-control" placeholder="email@example.com" id="email" name="email" #email="ngModel" [(ngModel)]="authservice.selectedUsuario.email">
               </div>
               <div class="form-group">
                 <label>Contraseña</label>
-                <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                <input type="password" class="form-control" placeholder="Password" id="password" name="password" #password="ngModel" [(ngModel)]="authservice.selectedUsuario.password">
               </div>
               <div class="form-group">
                 <div class="form-check">
@@ -36,15 +36,35 @@
                   </label>
                 </div>
               </div>
-              <button type="submit" class="btn btn-danger">Login</button>
+              <button type="submit" class="btn btn-danger" (click)="onSubmit(loginForm)">Login</button>
+              <small id="emailHelp" class="form-text text-danger" *ngIf="serverErrorMessages">{{serverErrorMessages}}</small>
+              <small id="emailHelp" class="form-text text-success" *ngIf="showSucessMessage">¡Has iniciado sesión correctamente!</small>
             </form>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">¿Nuevo aquí?, Regístrate</a>
+            <a class="dropdown-item" routerLink="/signup">¿Nuevo aquí?, Regístrate</a>
             <a class="dropdown-item" href="#">¿Has olvidado tu contraseña?</a>
           </div>
         </li>
+        <li class="nav-item active" *ngIf="authservice.isLoggedIn()">
+          <a class="nav-link" routerLink="/" (click)="authservice.onLogout()">Cerrar Sesión</a>
+        </li>
+        <li class="nav-item active" *ngIf="authservice.isLoggedIn()">
+          <a class="nav-link" routerLink="/userprofile">Mi perfil</a>
+        </li>
       </ul>
     </div>
-  </nav>
+</nav>
 
 <router-outlet></router-outlet>
+
+<ul class="nav justify-content-center bg-secondary mt-5">
+  <li class="nav-item">
+    <a class="nav-link text-light" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="#">Link</a>
+  </li>
+</ul>
