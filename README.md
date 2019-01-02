@@ -19,9 +19,11 @@ Bootstrap y los recursos que esta necesita para funcionar (jQuery).
 Material Icons (Aún no le dado uso).
 
 ------------------ AUN POR TERMINAR (02/01/2019) ------------------
+
 Getter de los datos del usuario a la hora de acceder al perfil de dicho usuario.
 
 ******** BACKEND ********
+
 Implementar imágenes a la tabla de usuarios.
 Añadir una nueva tabla llamada categorías que contendrá las categorías posibles de un curso.
 Añadir una nueva tabla llamada cursos que contendrá los cursos.
@@ -29,5 +31,6 @@ Implementar autenticación por google y facebook con passport.
 Crear métodos para traer dichas categorías y cursos.
 
 ******** FRONTEND ********
+
 Traer datos del usuario seleccionado
 Añadir interfaz para editar perfil.
