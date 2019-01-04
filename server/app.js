@@ -11,13 +11,13 @@ const rtsIndex = require('./routes/index.router');
 
 var app = express();
 
-// middleware
+// Middleware
 app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
 
-// error handler
+// Control de errores
 app.use((err, req, res, next) => {
     if (err.name === 'ValidationError') {
         var valErrors = [];
@@ -29,5 +29,5 @@ app.use((err, req, res, next) => {
     }
 });
 
-// start server
+// Iniciar la escucha del servidor
 app.listen(process.env.PORT, () => console.log(`Servidor iniciado en el puerto : ${process.env.PORT}`));

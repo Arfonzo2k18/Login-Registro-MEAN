@@ -14,10 +14,10 @@ passport.use(
                         return done(err);
                     // Usuario desconocido.
                     else if (!user)
-                        return done(null, false, { message: 'Email is not registered' });
+                        return done(null, false, { message: 'El email no está registrado.' });
                     // Contraseña errónea.
                     else if (!user.verifyPassword(password))
-                        return done(null, false, { message: 'Wrong password.' });
+                        return done(null, false, { message: 'Contraseña errónea.' });
                     // Autenticación correcta.
                     else
                         return done(null, user);

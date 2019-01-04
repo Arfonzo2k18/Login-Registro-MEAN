@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../models/usuario';
 import { Router } from '@angular/router';
+import { getToken } from '@angular/router/src/utils/preactivation';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,6 @@ export class AuthService {
   getUserProfile() {
     return this.http.get(this.URL_API + '/userProfile');
   }
-
 
   // Métodos de apoyo, recogida y creación de tokens.
 

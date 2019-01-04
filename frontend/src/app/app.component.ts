@@ -17,11 +17,7 @@ export class AppComponent implements OnInit {
   serverErrorMessages: string;
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  ngOnInit() {
-    if (this.authservice.isLoggedIn()) {
-      this.router.navigateByUrl('/userprofile');
-    }
-  }
+  ngOnInit() {}
 
   onSubmit(form: NgForm) {
     this.authservice.login(form.value).subscribe(
