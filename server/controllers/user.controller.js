@@ -19,7 +19,6 @@ module.exports.register = (req, res, next) => {
             else
                 return next(err);
         }
-
     });
 }
 // Método para autenticar un usuario.

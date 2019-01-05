@@ -2,6 +2,8 @@ require('./config/config');
 require('./models/db');
 require('./config/passportConfig');
 
+const multer = require('multer');
+const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -16,6 +18,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
+app.use(multer({dest: path.join(__dirname, '/public/upload/temp')}).single('image'));
 
 // Control de errores
 app.use((err, req, res, next) => {
