@@ -6,12 +6,6 @@ El backend está hecho con las siguientes tecnologías:
 
 -> MONGODB sistema de gestión de base de datos.
 
-Librerías utilizadas (BACKEND): mongoose como vínculo con la base de datos en mongodb. cors para permitir el acceso a angular desde express. bycrypt para encriptar la clave y mandarla a la bdd. jsonwebtoken para controlar las sesiones. passport como middleware de autenticación. lodash para modelar los objetos a la hora de traer un perfil (aún puede cambiar).
-
-Librerías utilizadas (FRONTEND): Bootstrap y los recursos que esta necesita para funcionar (jQuery). Material Icons.
-
------------------- AUN POR TERMINAR (08/01/2019) ------------------
-=======
 Librerías utilizadas (BACKEND):
 mongoose como vínculo con la base de datos en mongodb.
 cors para permitir el acceso a angular desde express.
