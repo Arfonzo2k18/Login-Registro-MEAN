@@ -8,7 +8,7 @@ const jwtHelper = require('../config/jwtHelper');
 
 router.post('/register', ctrlUser.register);
 router.post('/authenticate', ctrlUser.authenticate);
-router.get('/userProfile', ctrlUser.userProfile);
+router.get('/userProfile/:id', jwtHelper.verifyJwtToken, ctrlUser.userProfile);
 router.post('/createCourse', ctrlCourse.createCourse);
 router.get('/allCourses', ctrlCourse.allCourses);
 router.put('/editCourse/:id', ctrlCourse.editCourse);

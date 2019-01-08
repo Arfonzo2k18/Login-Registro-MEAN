@@ -9,13 +9,15 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { CoursesComponent } from './components/courses/courses.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     UserProfileComponent,
-    HomeComponent
+    HomeComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,

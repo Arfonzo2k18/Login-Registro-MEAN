@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger mb-5">
+<nav class="navbar navbar-expand-md navbar-dark bg-danger mb-5">
 
     <a class="navbar-brand brand-logo" routerLink="/"> <img src="../assets/logo.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,7 +12,7 @@
           <a class="nav-link" routerLink="/">Inicio</a>
         </li>
         <li class="nav-item active enlaces-bl">
-          <a class="nav-link" href="#">Cursos</a>
+          <a class="nav-link" routerLink="/courses">Cursos</a>
         </li>
         <li class="nav-item active enlaces-bl">
           <a class="nav-link" routerLink="/signup" *ngIf="!authservice.isLoggedIn()">Regístrate</a>
@@ -61,11 +61,11 @@
           </div>
 
         </li>
-        <li class="nav-item active" *ngIf="authservice.isLoggedIn()">
+        <li class="nav-item active enlaces-bl" *ngIf="authservice.isLoggedIn()">
           <a class="nav-link" routerLink="/" (click)="authservice.onLogout()">Cerrar Sesión</a>
         </li>
-        <li class="nav-item active" *ngIf="authservice.isLoggedIn()">
-          <a class="nav-link" routerLink="/userprofile">Mi perfil</a>
+        <li class="nav-item active enlaces-bl" *ngIf="authservice.isLoggedIn()">
+          <a class="nav-link" routerLink="/userprofile">Mi Perfil</a>
         </li>
       </ul>
 
@@ -79,13 +79,13 @@
 
   <ul class="nav justify-content-center bg-secondary mt-5">
     <li class="nav-item">
-      <a class="nav-link text-light" href="#">¿Quiénes somos?</a>
+      <a class="nav-link text-light enlaces-bl" href="#">¿Quiénes somos?</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-light" href="#">Contacto</a>
+      <a class="nav-link text-light enlaces-bl" href="#">Contacto</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-light" href="#">Empleo</a>
+      <a class="nav-link text-light enlaces-bl" href="#">Empleo</a>
     </li>
   </ul>
 
@@ -94,7 +94,7 @@
     <p class="text-light text-center pt-2">En SpicaProyect nos encaragamos de ofrecerte los mejores cursos online en español.</p>
     <ul class="nav justify-content-center">
       <li class="nav-item">
-        <a class="nav-link text-light" href="https://github.com/Arfonzo2k18">© Arfonzo</a>
+        <a class="nav-link text-light enlaces-bl" href="https://github.com/Arfonzo2k18">© 2019 - Arfonzo</a>
       </li>
     </ul>
 

@@ -40,10 +40,11 @@ module.exports.editCourse = async (req, res, next) => {
         categoria: req.body.categoria,
         tecnologia: req.body.tecnologia,
         horas: req.body.horas,
-        precio: req.body.precio
+        precio: req.body.precio,
+        imagen: req.body.imagen
     };
-    await Curso.findByIdAndUpdate(req.params.id, {$set: course}, function (err, course) {
-        if (err) return next(err);
+    await Curso.findByIdAndUpdate(req.params.id, {$set: course}, {upsert: false}, (err, result) => {
+        if (err) return res.send('El usuario que has introducido no existe.')
         res.status(200).send(['Curso actualizado correctamente.']);
     });
 };
@@ -59,7 +60,7 @@ seleccionarimagencreate = (req, res) => {
         // Localización de la imagen
         const imageTempPath = req.file.path;
         const ext = path.extname(req.file.originalname).toLowerCase();
-        const targetPath = path.resolve(`src/public/upload/${imgUrl}${ext}`);
+        const targetPath = path.resolve(`/static${imgUrl}${ext}`);
   
         // Validar extensión
         if (ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.gif') {

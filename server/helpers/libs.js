@@ -1,5 +1,6 @@
 const helpers = {};
 
+// Método que genera un título aleatorio para las imágenes.
 helpers.randomNumber = () => {
   const possible = 'abcdefghijklmnopqrstuvwxyz0123456789';
   let randomNumber = 0;

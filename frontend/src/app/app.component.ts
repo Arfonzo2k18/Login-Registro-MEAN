@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   constructor(private authservice: AuthService, private router: Router) {}
   showSucessMessage: boolean;
   serverErrorMessages: string;
+  // tslint:disable-next-line:max-line-length
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   ngOnInit() {}
@@ -22,8 +23,8 @@ export class AppComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.authservice.login(form.value).subscribe(
       res => {
-        this.showSucessMessage = true;
         this.authservice.setToken(res['token']);
+        this.authservice.setIdUsuario(res['id']);
         this.router.navigateByUrl('/userprofile');
       },
       err => {
@@ -31,4 +32,5 @@ export class AppComponent implements OnInit {
       }
     );
   }
+
 }

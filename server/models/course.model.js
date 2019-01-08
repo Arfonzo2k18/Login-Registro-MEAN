@@ -28,7 +28,7 @@ var courseSchema = new mongoose.Schema({
     imagen: {
         type: String,
         required: 'El curso debe tener una imagen',
-        default: '../public/upload/temp/prueba.png'
+        default: '/static/prueba.png'
     }
 });
 

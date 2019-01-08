@@ -28,19 +28,18 @@ module.exports.authenticate = (req, res, next) => {
         // Error por parte del middleware de passport.
         if (err) return res.status(400).json(err);
         // Usuario registrado.
-        else if (user) return res.status(200).json({ "token": user.generateJwt() });
+        else if (user) return res.status(200).json({ "token": user.generateJwt(), "id": user.id });
         // Usuario desconocido o contraseña errónea.
         else return res.status(404).json(info);
     })(req, res);
 }
 // Método para proporcionar el perfil del usuario.
-module.exports.userProfile = (req, res, next) =>{
+module.exports.userProfile = (req, res, next) => {
     Usuario.findOne({ _id: req._id },
         (err, user) => {
             if (!user)
-                return res.status(404).json({ status: false, message: 'Usuario enviado no encontrado.' });
+                return res.status(404).json({ status: false, message: 'Usuario no encontrado.' });
             else
-                return res.status(200).json({ status: true, user : _.pick(user,['username','email']) });
-        }
-    );
+                return res.status(200).json({ status: true, "user": user.pick(['nombre','email']) });
+        });
 }

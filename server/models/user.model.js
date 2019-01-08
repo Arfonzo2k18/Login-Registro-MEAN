@@ -21,6 +21,16 @@ var userSchema = new mongoose.Schema({
         required: 'La contraseña no puede estar vacía',
         minlength: [4, 'La contraseña debe contener al menos 4 carácteres']
     },
+    singUpDate: {
+        type: Date,
+        required: true,
+        default: new Date()
+    },
+    lastAccess: {
+        type: Date,
+        required: true,
+        default: new Date()
+    },
     saltSecret: String
 });
 

@@ -8,16 +8,16 @@ import { AuthService } from '../../services/auth.service';
 })
 export class UserProfileComponent implements OnInit {
   userDetails;
+
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.authService.getUserProfile().subscribe(
       res => {
-        this.userDetails = res['usuario'];
+        this.userDetails = res['user'];
       },
       err => {
         console.log(err);
-      }
-    );
+    });
   }
 }

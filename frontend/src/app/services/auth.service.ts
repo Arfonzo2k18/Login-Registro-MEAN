@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../models/usuario';
 import { Router } from '@angular/router';
-import { getToken } from '@angular/router/src/utils/preactivation';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +16,11 @@ export class AuthService {
   noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
 
   constructor(private http: HttpClient, private router: Router) {
-    this.selectedUsuario = new Usuario();
+      this.selectedUsuario = new Usuario;
   }
 
   postUsuario(usuario: Usuario) {
-    return this.http.post(this.URL_API + '/register', usuario);
+    return this.http.post(this.URL_API + '/register', usuario, this.noAuthHeader);
   }
 
   login(authCredentials) {
@@ -29,7 +28,8 @@ export class AuthService {
   }
 
   getUserProfile() {
-    return this.http.get(this.URL_API + '/userProfile');
+    this.id_usuario = localStorage.getItem('id');
+    return this.http.get(this.URL_API + '/userProfile/' + this.id_usuario);
   }
 
   // Métodos de apoyo, recogida y creación de tokens.
@@ -44,6 +44,18 @@ export class AuthService {
 
   deleteToken() {
     localStorage.removeItem('token');
+  }
+
+  setIdUsuario(id: string) {
+    localStorage.setItem('id', id);
+  }
+
+  getIdUsuario() {
+    return localStorage.getItem('id');
+  }
+
+  deleteIdUsuario() {
+    localStorage.removeItem('id');
   }
 
   getUserPayload() {

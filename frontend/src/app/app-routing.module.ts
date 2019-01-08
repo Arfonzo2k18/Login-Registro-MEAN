@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { SignupComponent } from './components/signup/signup.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { HomeComponent } from './components/home/home.component';
+import { CoursesComponent } from './components/courses/courses.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -11,7 +13,12 @@ const routes: Routes = [
   },
   {
     path: 'userprofile',
-    component: UserProfileComponent
+    component: UserProfileComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'courses',
+    component: CoursesComponent
   },
   {
     path: '',
