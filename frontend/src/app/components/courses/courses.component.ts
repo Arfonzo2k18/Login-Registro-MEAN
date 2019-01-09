@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit {
   ngOnInit() {
     this.getTodosLosCursos();
   }
-
+  // Método que recibe todos los cursos que hay en nuestra base de datos y los guarda en un array.
   getTodosLosCursos() {
     this.coursesService.getCursos()
       .subscribe(res => {
