@@ -1,9 +1,22 @@
 .imagenes-cursos {
     -webkit-transition: 0.4s;
+    z-index: 0;
 }
 
 .imagenes-cursos:hover {
     -webkit-transition: 0.4s;
     -webkit-transform: scale(1.02);
     -webkit-box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.6);
+    z-index: 0;
+}
+
+.oferta-icon {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 227px;
+    bottom: 0;
+    width: 60px;
+    height: 60px;
 }

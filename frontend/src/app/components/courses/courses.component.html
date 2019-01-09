@@ -4,11 +4,14 @@
 
     <div class="col-sm-6 col-xs-12 col-lg-4" *ngFor="let curso of coursesService.cursos">
       <div class="card mb-3 imagenes-cursos" style="width: 18rem;">
-        <img src="{{ coursesService.URL_IMG + curso.imagen }}" class="card-img-top filtros-imagen" width="320" height="250" alt="...">
+        <img src="../../../assets/new.svg" class="oferta-icon">
+        <img src="{{ coursesService.URL_IMG + curso.imagen }}" class="card-img-top" width="320" height="250" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{ curso.nombre }}</h5>
           <p class="card-text">{{ curso.descripcion }}</p>
-          <a href="#" class="btn btn-danger enlaces-bl">Ver más..</a>
+          <div>
+            <a href="#" class="btn btn-danger enlaces-bl mr-5">Ver más..</a>
+          </div>
         </div>
       </div>
     </div>
