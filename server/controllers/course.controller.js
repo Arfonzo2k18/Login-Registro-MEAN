@@ -14,6 +14,7 @@ module.exports.createCourse = (req, res, next) => {
     course.tecnologia = req.body.tecnologia;
     course.horas = req.body.horas;
     course.precio = req.body.precio;
+    course.imagen = req.body.imagen;
     course.save((err, doc) => {
         if (!err){
             res.status(200).send(['Curso creado correctamente.']);

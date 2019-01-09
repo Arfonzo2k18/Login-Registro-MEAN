@@ -4,7 +4,8 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.css'],
+  providers: [AuthService]
 })
 export class UserProfileComponent implements OnInit {
   userDetails;
@@ -12,12 +13,13 @@ export class UserProfileComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.authService.getUserProfile().subscribe(
-      res => {
-        this.userDetails = res['user'];
-      },
-      err => {
-        console.log(err);
-    });
+    this.getPerfil();
   }
+
+  getPerfil() {
+      this.authService.getUserProfile(this.authService.getIdUsuario())
+        .subscribe(res => {
+          this.userDetails = res;
+        });
+    }
 }

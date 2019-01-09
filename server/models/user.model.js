@@ -31,6 +31,11 @@ var userSchema = new mongoose.Schema({
         required: true,
         default: new Date()
     },
+    imagen: {
+        type: String,
+        required: true,
+        default: '/static/fotoperfil.png'
+    },
     saltSecret: String
 });
 

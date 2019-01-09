@@ -4,11 +4,12 @@ const router = express.Router();
 const ctrlUser = require('../controllers/user.controller');
 const ctrlCourse = require('../controllers/course.controller');
 
-const jwtHelper = require('../config/jwtHelper');
-
+// Rutas usuarios.
 router.post('/register', ctrlUser.register);
 router.post('/authenticate', ctrlUser.authenticate);
-router.get('/userProfile/:id', jwtHelper.verifyJwtToken, ctrlUser.userProfile);
+router.get('/userProfile/:id', ctrlUser.getUserProfile);
+
+// Rutas cursos.
 router.post('/createCourse', ctrlCourse.createCourse);
 router.get('/allCourses', ctrlCourse.allCourses);
 router.put('/editCourse/:id', ctrlCourse.editCourse);

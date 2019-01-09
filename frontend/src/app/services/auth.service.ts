@@ -7,17 +7,16 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  selectedUsuario: Usuario;
   readonly URL_API = 'http://localhost:3000/api';
+  readonly URL_IMG = 'http://localhost:3000';
 
+  selectedUsuario = new Usuario();
   token: string;
-  id_usuario: string;
+  idusuario: string;
 
   noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
 
-  constructor(private http: HttpClient, private router: Router) {
-      this.selectedUsuario = new Usuario;
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   postUsuario(usuario: Usuario) {
     return this.http.post(this.URL_API + '/register', usuario, this.noAuthHeader);
@@ -27,9 +26,8 @@ export class AuthService {
     return this.http.post(this.URL_API + '/authenticate', authCredentials, this.noAuthHeader);
   }
 
-  getUserProfile() {
-    this.id_usuario = localStorage.getItem('id');
-    return this.http.get(this.URL_API + '/userProfile/' + this.id_usuario);
+  getUserProfile(idusuario: string) {
+    return this.http.get(this.URL_API + '/userprofile/' + idusuario);
   }
 
   // Métodos de apoyo, recogida y creación de tokens.
@@ -46,16 +44,16 @@ export class AuthService {
     localStorage.removeItem('token');
   }
 
-  setIdUsuario(id: string) {
-    localStorage.setItem('id', id);
+  setIdUsuario(idusuario: string) {
+    localStorage.setItem('idusuario', idusuario);
   }
 
   getIdUsuario() {
-    return localStorage.getItem('id');
+    return localStorage.getItem('idusuario');
   }
 
   deleteIdUsuario() {
-    localStorage.removeItem('id');
+    localStorage.removeItem('idusuario');
   }
 
   getUserPayload() {
@@ -79,6 +77,7 @@ export class AuthService {
 
   onLogout() {
     this.deleteToken();
+    this.deleteIdUsuario();
     this.router.navigate(['/']);
   }
 

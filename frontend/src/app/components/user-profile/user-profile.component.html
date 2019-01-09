@@ -1,17 +1,20 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
-            <img src="..." class="rounded" alt="...">
+
+        <div class="col-sm-6 bg-dark mb-lg-0">
+            <img src="{{ authService.URL_IMG + userDetails.imagen }}" class="rounded mx-auto d-block col-sm-6 col-lg-12" alt="Foto de perfil">
         </div>
 
-        <div class="col-sm-6">
-            <div class="card text-white bg-dark" style="max-width: 18rem;">
-                <h5 class="card-title">MI PERFIL</h5>
-                <p class="card-text">Nombre:</p>
-                <p class="card-text"> {{ userDetails.nombre }} </p>
-                <p class="card-text">Email:</p>
-                <p class="card-text"> {{ userDetails.email }} </p>
+        <div class="col-sm-6 mt-sm-3 mt-lg-0">
+            <div class="card text-white bg-dark">
+                <h5 class="card-title text-center mt-3">MI PERFIL</h5>
+                <p class="card-text ml-3">Nombre:</p>
+                <p class="card-text ml-3"> {{ userDetails.nombre }} </p>
+                <p class="card-text ml-3">Username:</p>
+                <p class="card-text ml-3"> {{ userDetails.username }} </p>
+                <p class="card-text ml-3">Email:</p>
+                <p class="card-text ml-3 mb-3"> {{ userDetails.email }} </p>
             </div>
         </div>
 

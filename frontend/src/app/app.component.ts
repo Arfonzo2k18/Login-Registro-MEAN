@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit {
     this.authservice.login(form.value).subscribe(
       res => {
         this.authservice.setToken(res['token']);
-        this.authservice.setIdUsuario(res['id']);
+        this.authservice.setIdUsuario(res['idusuario']);
         this.router.navigateByUrl('/userprofile');
       },
       err => {
