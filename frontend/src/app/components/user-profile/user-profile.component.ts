@@ -9,7 +9,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class UserProfileComponent implements OnInit {
   userDetails;
-
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -21,5 +20,5 @@ export class UserProfileComponent implements OnInit {
         .subscribe(res => {
           this.userDetails = res;
         });
-    }
+  }
 }

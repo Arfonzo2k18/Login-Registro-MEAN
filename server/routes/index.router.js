@@ -12,6 +12,7 @@ router.get('/userProfile/:id', ctrlUser.getUserProfile);
 // Rutas cursos.
 router.post('/createCourse', ctrlCourse.createCourse);
 router.get('/allCourses', ctrlCourse.allCourses);
+router.get('/getCourseDetails/:id', ctrlCourse.getCourseDetails);
 router.put('/editCourse/:id', ctrlCourse.editCourse);
 
 module.exports = router;

@@ -13,13 +13,15 @@ export class CoursesService {
   readonly URL_API = 'http://localhost:3000/api';
   readonly URL_IMG = 'http://localhost:3000';
 
-  id_curso: string;
-
   constructor(private http: HttpClient) {
     this.selectedCurso = new Curso();
   }
 
   getCursos() {
     return this.http.get(this.URL_API + '/allCourses');
+  }
+
+  getDetallesCurso(idcurso: string) {
+    return this.http.get(this.URL_API + '/getCourseDetails/' + idcurso);
   }
 }

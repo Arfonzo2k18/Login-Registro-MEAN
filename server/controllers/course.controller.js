@@ -33,6 +33,13 @@ module.exports.allCourses = async (req, res, next) => {
     res.json(courses);
 };
 
+// Método para recoger un curso.
+module.exports.getCourseDetails = async (req, res, next) => {
+    const { id } = req.params;
+    const course = await Curso.findById(id);
+    res.json(course);
+};
+
 // Método para modificar un curso según su ID.
 module.exports.editCourse = async (req, res, next) => {
     const course = {
@@ -58,14 +65,14 @@ seleccionarimagencreate = (req, res) => {
       if (images.length > 0) {
         saveImage()
       } else {
-        // Localización de la imagen
+        // Localización de la imagen.
         const imageTempPath = req.file.path;
         const ext = path.extname(req.file.originalname).toLowerCase();
         const targetPath = path.resolve(`/static${imgUrl}${ext}`);
   
-        // Validar extensión
+        // Validar extensión.
         if (ext === '.png' || ext === '.jpg' || ext === '.jpeg' || ext === '.gif') {
-          // Necesitas la ruta de la carpeta "temp" o dará error.
+          // Necesitas la ruta de la carpeta "static" o dará error.
           await fs.rename(imageTempPath, targetPath);
         } else {
           await fs.unlink(imageTempPath);
