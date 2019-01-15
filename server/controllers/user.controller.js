@@ -36,6 +36,12 @@ module.exports.authenticate = (req, res, next) => {
 
 module.exports.getUserProfile = async (req, res, next) => {
     const { id } = req.params;
-    const usuario = await Usuario.findById(id);
+    const usuario = await Usuario.findById(id);  
     res.json(usuario);
 };
+
+/*module.exports.getNombreAutor = async (req, res, next) => {
+    const { id } = req.params;
+    const autor = await Usuario.findById(id);
+    res.json(autor.nombre);
+}*/

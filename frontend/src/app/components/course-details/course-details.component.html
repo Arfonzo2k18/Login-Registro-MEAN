@@ -1,3 +1,22 @@
 <div class="container">
-  {{cursoSeleccionado.nombre}}
+  <div class="row">
+    <div class="col bg-dark text-light text-center mb-3">
+      <h1 class="pt-3">{{cursoSeleccionado.nombre}}</h1>
+      <h5>{{cursoSeleccionado.descripcion}}</h5>
+      <h5>{{nombreAutor}}</h5>
+    </div>
+  
+    <div class="col-md-auto">
+      <div class="card mb-3 imagenes-cursos" style="width: 18rem;">
+        <img src="../../../assets/new.svg" class="oferta-icon">
+        <img src="{{ coursesService.URL_IMG + cursoSeleccionado.imagen }}" class="card-img-top" width="320" height="250" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ cursoSeleccionado.nombre }}</h5>
+            <p class="card-text text-black-50"><i class="material-icons tm-ic-16">alarm</i>{{ cursoSeleccionado.horas }} horas</p>
+            <p class="card-text text-black-50"><img src="../../../assets/money.svg" class="money-icon">{{ cursoSeleccionado.precio }} €</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>

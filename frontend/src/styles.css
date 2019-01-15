@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos enlaces con texto negro */
 .enlaces-ng {
     position: relative;
     overflow: hidden;
@@ -22,6 +22,7 @@
     left: 0;
 }
 
+/* Estilos enlaces con texto blanco */
 .enlaces-bl {
     position: relative;
     overflow: hidden;
@@ -43,4 +44,17 @@
 
 .enlaces-bl:hover:after {
     left: 0;
+}
+
+/* Estilos para el tamaño de los iconos */
+.tm-ic-16 {
+    font-size:16px;
+}
+
+.tm-ic-24 {
+    font-size:24px;
+}
+
+.tm-ic-32 {
+    font-size:32px;
 }

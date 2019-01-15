@@ -12,11 +12,13 @@ import { Curso } from '../../models/curso';
 export class CourseDetailsComponent implements OnInit {
   id_curso;
   cursoSeleccionado;
+  nombreAutor: String;
   constructor(private route: ActivatedRoute, private coursesService: CoursesService) { }
 
   ngOnInit() {
     this.id_curso = this.route.snapshot.params.id;
     this.getDetalles(this.id_curso);
+    this.getAutorCurso(this.cursoSeleccionado.autor);
   }
 
   getDetalles(id_curso: string) {
@@ -24,6 +26,13 @@ export class CourseDetailsComponent implements OnInit {
       .subscribe(res => {
         this.cursoSeleccionado = res as Curso;
       });
-    }
+  }
+
+  getAutorCurso(id_autor: string) {
+    this.coursesService.getAutorCurso(id_autor)
+    .subscribe(res => {
+      this.nombreAutor = res as String;
+    });
+  }
 
 }

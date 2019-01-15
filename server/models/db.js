@@ -5,5 +5,5 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useCreateInde
     else { console.log('Error en conexión con mongodb: ' + JSON.stringify(err, undefined, 2)); }
 });
 
-require('./course.model');
 require('./user.model');
+require('./course.model');

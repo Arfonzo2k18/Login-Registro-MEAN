@@ -1,6 +1,7 @@
 export class Curso {
 
-    constructor(nombre = '', descripcion = '', categoria = '', tecnologia = '', horas = 0, precio = 0, imagen = '') {
+    // tslint:disable-next-line:max-line-length
+    constructor(nombre = '', descripcion = '', categoria = '', tecnologia = '', horas = 0, precio = 0, imagen = '', autor = '', requisitos = '', aprendizaje = '', fecha = new Date) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.categoria = categoria;
@@ -8,6 +9,10 @@ export class Curso {
         this.horas = horas;
         this.precio = precio;
         this.imagen = imagen;
+        this.autor = autor;
+        this.requisitos = requisitos;
+        this.aprendizaje = aprendizaje;
+        this.fecha = fecha;
     }
 
     nombre: string;
@@ -17,4 +22,8 @@ export class Curso {
     horas: number;
     precio: number;
     imagen: string;
+    autor: string;
+    requisitos: string;
+    aprendizaje: string;
+    fecha: Date;
 }

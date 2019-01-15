@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Curso } from '../../models/curso';
-import { Router } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -24,4 +24,9 @@ export class CoursesService {
   getDetallesCurso(idcurso: string) {
     return this.http.get(this.URL_API + '/getCourseDetails/' + idcurso);
   }
+
+  getAutorCurso(idautor: string) {
+    return this.http.get(this.URL_API + '/getAutor/' + idautor);
+  }
+
 }
