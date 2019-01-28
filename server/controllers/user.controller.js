@@ -3,6 +3,7 @@ const passport = require('passport');
 const _ = require('lodash');
 
 const Usuario = mongoose.model('usuario');
+
 // Método para registrar un usuario.
 module.exports.register = (req, res, next) => {
     var user = new Usuario();
@@ -39,9 +40,3 @@ module.exports.getUserProfile = async (req, res, next) => {
     const usuario = await Usuario.findById(id);  
     res.json(usuario);
 };
-
-/*module.exports.getNombreAutor = async (req, res, next) => {
-    const { id } = req.params;
-    const autor = await Usuario.findById(id);
-    res.json(autor.nombre);
-}*/

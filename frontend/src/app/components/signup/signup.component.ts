@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
         if (err.status === 422) {
           this.serverErrorMessages = err.error.join('<br/>');
         } else {
-          this.serverErrorMessages = 'Something went wrong.Please contact admin.';
+          this.serverErrorMessages = 'Algo está mal, por favor, contacta con un Administrador.';
         }
       }
     );

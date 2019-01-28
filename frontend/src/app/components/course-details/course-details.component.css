@@ -26,3 +26,7 @@
     height: 24px;
     color: grey;
 }
+
+.aprendizaje {
+    list-style-image: url('../../../assets/checked.png');
+}

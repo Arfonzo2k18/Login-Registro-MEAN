@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var Usuario = mongoose.model('usuario');
 
 var courseSchema = new mongoose.Schema({
     nombre: {
@@ -32,7 +30,10 @@ var courseSchema = new mongoose.Schema({
         required: 'El curso debe tener una imagen',
         default: '/static/prueba.png'
     },
-    autor: { type: Schema.ObjectId, ref: "Usuario", required: 'El curso debe tener un autor' },
+    autor: { 
+        type: String, 
+        required: 'El curso debe tener un autor' 
+    },
     requisitos: {
         type: String,
         required: 'Los requisitos no pueden estar vacíos'

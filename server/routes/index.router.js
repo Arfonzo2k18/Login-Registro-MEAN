@@ -8,7 +8,6 @@ const ctrlCourse = require('../controllers/course.controller');
 router.post('/register', ctrlUser.register);
 router.post('/authenticate', ctrlUser.authenticate);
 router.get('/userProfile/:id', ctrlUser.getUserProfile);
-//router.get('/getAutor/:id', ctrlUser.getNombreAutor);
 
 // Rutas cursos.
 router.post('/createCourse', ctrlCourse.createCourse);
