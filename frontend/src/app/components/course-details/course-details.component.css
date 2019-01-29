@@ -30,3 +30,7 @@
 .aprendizaje {
     list-style-image: url('../../../assets/checked.png');
 }
+
+.flechas:focus {
+    -webkit-transform: rotate(90deg);
+}

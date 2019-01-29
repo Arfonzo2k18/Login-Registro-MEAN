@@ -7,3 +7,5 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useCreateInde
 
 require('./user.model');
 require('./course.model');
+require('./section.model');
+require('./class.model');
