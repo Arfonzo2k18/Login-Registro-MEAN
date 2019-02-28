@@ -3,7 +3,6 @@ require('./models/db');
 require('./config/passportConfig');
 
 const morgan = require('morgan');
-const multer = require('multer');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -20,7 +19,6 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(passport.initialize());
 app.use('/api', rtsIndex);
-app.use(multer({dest: path.join(__dirname, '/static')}).single('image'));
 
 // Control de errores
 app.use((err, req, res, next) => {

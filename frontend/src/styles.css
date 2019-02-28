@@ -62,3 +62,8 @@
 body {
     font-family: 'Raleway', sans-serif;
 }
+
+.flechas_giradas {
+    -webkit-transition: 0.6s;
+    -webkit-transform: rotate(90deg);
+}

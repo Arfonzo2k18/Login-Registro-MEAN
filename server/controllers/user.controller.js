@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const passport = require('passport');
 const _ = require('lodash');
+const fs = require("fs");
+const random = require('../helpers/libs');
 
 const Usuario = mongoose.model('usuario');
 
@@ -11,16 +13,28 @@ module.exports.register = (req, res, next) => {
     user.username = req.body.username;
     user.email = req.body.email;
     user.password = req.body.password;
-    user.save((err, doc) => {
-        if (!err)
-            res.send(doc);
-        else {
-            if (err.code == 11000)
-                res.status(422).send(['Dirección de email duplicada.']);
-            else
-                return next(err);
-        }
-    });
+
+   /* if(req.body.foto != "") {
+        var imagen = req.body.foto;
+        imagen = imagen.replace("\n","");
+        var nombrearchivo = random.randomNumber() + ".jpg";
+        fs.writeFile(nombrearchivo, imagen, 'base64', function(err) {
+            if(err) {
+                console.log(err);
+            }
+        });
+
+        user.imagen = '/static/' + nombrearchivo;*/
+        user.save((err, doc) => {
+            if (!err)
+                res.send(doc);
+            else {
+                if (err.code == 11000)
+                    res.status(422).send(['Dirección de email duplicada.']);
+                else
+                    return next(err);
+            }
+        });
 }
 // Método para autenticar un usuario.
 module.exports.authenticate = (req, res, next) => {
@@ -38,5 +52,18 @@ module.exports.authenticate = (req, res, next) => {
 module.exports.getUserProfile = async (req, res, next) => {
     const { id } = req.params;
     const usuario = await Usuario.findById(id);  
-    res.json(usuario);
+    res.status(200).json(usuario);
 };
+
+/*
+    user.save((err, doc) => {
+        if (!err)
+            res.send(doc);
+        else {
+            if (err.code == 11000)
+                res.status(422).send(['Dirección de email duplicada.']);
+            else
+                return next(err);
+        }
+    });
+*/

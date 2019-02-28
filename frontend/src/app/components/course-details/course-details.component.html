@@ -33,16 +33,33 @@
     <div class="col-lg-12 bg-light text-dark mb-3">
         <h3 class="text-center mt-3 mb-3">Contenido del curso:</h3>
 
-        <div class="accordion mb-3" *ngFor="let seccion of coursesService.secciones">
-          <div class="card-header" id="headingOne">
-            <img src="../../../assets/arrow.svg" width="14px" height="14px" class="pr-1 mr-2 flechas"/><a>{{seccion.nombre}}</a>
+
+        <div class="accordion mb-3" id="acordeon" *ngFor="let seccion of coursesService.secciones">
+
+          <div class="card-header" id="{{seccion._id}}" data-toggle="collapse" [attr.data-target]="'#demo'+seccion._id" aria-expanded="true" (click)="getClases(seccion._id)" *ngIf="cargador">
+            <img src="../../../assets/arrow.svg" width="14px" height="14px" class="pr-1 mr-2 flechas_giradas"/><a>{{seccion.nombre}}</a>
           </div>
+
+          <div class="card-header" id="{{seccion._id}}" data-toggle="collapse" [attr.data-target]="'#demo'+seccion._id" aria-expanded="true" (click)="getClases(seccion._id)" *ngIf="!cargador">
+              <img src="../../../assets/arrow.svg" width="14px" height="14px" class="pr-1 mr-2 flechas"/><a>{{seccion.nombre}}</a>
+            </div>
+
+          <div id="demo{{seccion._id}}" class="collapse" data-parent="#acordeon">
+
+            <div *ngFor="let clase of coursesService.clases">
+
+              <div class="card-header bg-light text-dark">
+                <div>
+                  {{clase.nombre}}
+                </div>
+              </div>
+              
+            </div>
+
+          </div>
+
         </div>
 
     </div>
-</div>
-
-
-
-
+  </div>
 </div>

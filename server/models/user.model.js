@@ -7,6 +7,11 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: 'El nombre no puede estar vacío'
     },
+    telefono: {
+        type: String,
+        minlength: [9, 'El teléfono debe tener 9 carácteres'],
+        maxlength: [9, 'El teléfono debe tener 9 carácteres']
+    },
     username: {
         type: String,
         required: 'El nombre de usuario no puede estar vacío'
@@ -22,11 +27,6 @@ var userSchema = new mongoose.Schema({
         minlength: [4, 'La contraseña debe contener al menos 4 carácteres']
     },
     singUpDate: {
-        type: Date,
-        required: true,
-        default: new Date()
-    },
-    lastAccess: {
         type: Date,
         required: true,
         default: new Date()

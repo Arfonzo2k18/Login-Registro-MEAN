@@ -19,7 +19,6 @@ export class CourseDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private coursesService: CoursesService) { }
 
   ngOnInit() {
-    this.cargador = true;
     this.id_curso = this.route.snapshot.params.id;
     this.getDetalles(this.id_curso);
     this.getSecciones(this.id_curso);
@@ -29,7 +28,6 @@ export class CourseDetailsComponent implements OnInit {
     this.coursesService.getDetallesCurso(id_curso)
       .subscribe(res => {
         this.coursesService.selectedCurso = res as Curso;
-        this.cargador = false;
       });
   }
 
@@ -37,7 +35,6 @@ export class CourseDetailsComponent implements OnInit {
     this.coursesService.getSeccionesCurso(id_curso)
       .subscribe(res => {
         this.coursesService.secciones = res as Seccion[];
-        this.cargador = false;
       });
   }
 
@@ -45,8 +42,17 @@ export class CourseDetailsComponent implements OnInit {
     this.coursesService.getClasesSeccion(id_seccion)
     .subscribe(res => {
       this.coursesService.clases = res as Clase[];
-      this.cargador = false;
+      this.comprobarSeleccion();
+      this.cargador = true;
     });
+  }
+
+  comprobarSeleccion() {
+    if (this.cargador === false) {
+      this.cargador = false;
+    } else if (this.cargador === true){
+      this.cargador = true;
+    }
   }
 
 }
